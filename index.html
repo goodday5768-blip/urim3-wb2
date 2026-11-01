@@ -738,8 +738,8 @@ function renderWork() {
   if (n === 8) box.querySelectorAll('.pool').forEach(pl => { const k = pl.dataset.p;
     pl.querySelectorAll('.chip').forEach(c => { c.onclick = () => { if (locked(t, k)) return; const a = t.ans[k] || (t.ans[k] = []); const ci = +c.dataset.c; if (!a.includes(ci)) a.push(ci); save(); paint(); }; }); });
   if (n === 9) box.querySelectorAll('[data-l]').forEach(b => { b.onclick = () => { if (locked(t, 'p')) return; const a = t.ans.p || (t.ans.p = []); if (!a.includes(b.dataset.l) && a.length < prep(p).p9.show.length) a.push(b.dataset.l); save(); paint(); }; });
-  if (n === 1) $('#readDone').onclick = () => { t.stage = 2; t.at = fmtTime(new Date()); save(); afterDone(); go(2); };
-  if (n === 4) $('#trDone').onclick = () => { t.stage = 2; t.at = fmtTime(new Date()); save(); afterDone(); paint(); };
+  if (n === 1) $('#readDone').onclick = () => { t.stage = 2; t.at = fmtTime(new Date()); save(); report('step', {name: cur.name, range: rangeName(cur.p, 1) + ' (완료)'}); afterDone(); go(2); };   // 11-01 읽기·해석 단계도 서버에(학습 현황)
+  if (n === 4) $('#trDone').onclick = () => { t.stage = 2; t.at = fmtTime(new Date()); save(); report('step', {name: cur.name, range: rangeName(cur.p, 4) + ' (완료)'}); afterDone(); paint(); };
   $('#prev').disabled = n === 1; $('#next').disabled = n === 10;
   paint();
 }
